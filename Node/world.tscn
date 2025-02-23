@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://def03rya6ihvf"]
+
+[ext_resource type="PackedScene" uid="uid://ctv64inm3gsud" path="res://Node/room.tscn" id="1_1ov52"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_ecakd"]
+[ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="3_m2s5c"]
+[ext_resource type="Script" path="res://Scripts/generation.gd" id="4_tob1c"]
+[ext_resource type="Script" path="res://Scripts/enemies.gd" id="5_w6e3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdpd2"]
+size = Vector2(14, 14.3333)
+
+[sub_resource type="Animation" id="Animation_617bc"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.454902, 0.211765, 1), Color(1, 1, 1, 1), Color(0, 0.454902, 0.211765, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rwaqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.454902, 0.211765, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11tyq"]
+_data = {
+"Hit": SubResource("Animation_617bc"),
+"RESET": SubResource("Animation_rwaqh")
+}
+
+[node name="World" type="Node2D"]
+
+[node name="Base" parent="." instance=ExtResource("1_1ov52")]
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+script = ExtResource("2_ecakd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+modulate = Color(0, 0.454902, 0.211765, 1)
+texture = ExtResource("3_m2s5c")
+region_enabled = true
+region_rect = Rect2(477, 1, 14, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.333328, -0.166672)
+shape = SubResource("RectangleShape2D_kdpd2")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_11tyq")
+}
+
+[node name="Generation" type="Node" parent="."]
+script = ExtResource("4_tob1c")
+enemy_spawn_chance = 0.7
+coin_spawn_chance = 0.8
+heart_spawn_chance = 0.3
+max_enemies_per_room = 1
+max_coins_per_room = 3
+max_hearts_per_room = 1
+
+[node name="Enemies" type="Node" parent="." groups=["Enemy_Manager"]]
+script = ExtResource("5_w6e3c")
