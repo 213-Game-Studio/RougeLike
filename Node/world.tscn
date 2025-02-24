@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://def03rya6ihvf"]
+[gd_scene load_steps=13 format=3 uid="uid://def03rya6ihvf"]
 
 [ext_resource type="PackedScene" uid="uid://ctv64inm3gsud" path="res://Node/room.tscn" id="1_1ov52"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_ecakd"]
 [ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="3_m2s5c"]
+[ext_resource type="AudioStream" uid="uid://btlye3e10elad" path="res://Assets/SFX/walk.wav" id="4_eseee"]
 [ext_resource type="Script" path="res://Scripts/generation.gd" id="4_tob1c"]
 [ext_resource type="Script" path="res://Scripts/enemies.gd" id="5_w6e3c"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="6_8nhse"]
@@ -47,6 +48,9 @@ _data = {
 "RESET": SubResource("Animation_rwaqh")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s643j"]
+bg_color = Color(0, 0, 0, 0.407843)
+
 [node name="World" type="Node2D"]
 
 [node name="Base" parent="." instance=ExtResource("1_1ov52")]
@@ -72,6 +76,10 @@ shape = SubResource("RectangleShape2D_kdpd2")
 libraries = {
 "": SubResource("AnimationLibrary_11tyq")
 }
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("4_eseee")
+volume_db = -20.0
 
 [node name="Generation" type="Node" parent="."]
 script = ExtResource("4_tob1c")
@@ -163,3 +171,46 @@ scale = Vector2(3, 3)
 texture = ExtResource("3_m2s5c")
 region_enabled = true
 region_rect = Rect2(543, 186, 17, 17)
+
+[node name="MiniMap" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -223.0
+offset_top = -222.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s643j")
+
+[node name="GridContainer" type="GridContainer" parent="UI/MiniMap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 38.0
+offset_right = -26.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="Label" type="Label" parent="UI/MiniMap"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.0
+offset_top = 6.0
+offset_right = 27.0
+offset_bottom = 29.0
+grow_horizontal = 2
+text = "Level 1
+"

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var has_key : bool = false
+
 signal player_moved
 
 func _physics_process(delta):
@@ -40,6 +42,10 @@ func move(direction: Vector2) -> void:
 	if result:
 		if result.collider.is_in_group("wall"):
 			return
+	
+	$SFX.stream = load("res://Assets/SFX/walk.wav")
+	$SFX.play()
+	
 	position += 48 * direction
 	
 	player_moved.emit()
@@ -56,6 +62,12 @@ func try_attack(direction: Vector2) -> void:
 
 func take_damage(damage : int):
 	Global.health -= damage
+	
+	$SFX.stream = load("res://Assets/SFX/Hit.wav")
+	$SFX.play()
+	
 	$AnimationPlayer.play("Hit")
+	
 	if Global.health <= 0:
-		get_tree().reload_current_scene()
+		Sfx.get_child(4).play()
+		get_tree().change_scene_to_file("res://Node/death_menu.tscn")

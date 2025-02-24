@@ -1,15 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://ctv64inm3gsud"]
+[gd_scene load_steps=6 format=4 uid="uid://b2nt6o6tcbl0y"]
 
-[ext_resource type="Script" path="res://Scripts/room.gd" id="1_3ogbv"]
-[ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="1_fta14"]
-[ext_resource type="PackedScene" uid="uid://u1ss5cvol7xx" path="res://Node/enemy.tscn" id="2_lbddr"]
-[ext_resource type="PackedScene" uid="uid://dngcuaou0vck4" path="res://Node/heart.tscn" id="3_4iu8m"]
-[ext_resource type="PackedScene" uid="uid://cqq8rxbkds524" path="res://Node/coin.tscn" id="3_bh7tm"]
-[ext_resource type="PackedScene" uid="uid://b4s5ec6fhgs43" path="res://Node/key.tscn" id="5_h84cp"]
-[ext_resource type="PackedScene" uid="uid://dfk86pr47twfs" path="res://Node/door.tscn" id="6_iyyfo"]
+[ext_resource type="Script" path="res://Scripts/death_menu.gd" id="1_abqey"]
+[ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="2_rin4a"]
+[ext_resource type="FontFile" uid="uid://b3ny887uyo3xp" path="res://Assets/Kenney Pixel.ttf" id="3_uqxmd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nfty"]
-texture = ExtResource("1_fta14")
+texture = ExtResource("2_rin4a")
 separation = Vector2i(1, 1)
 1:0/0 = 0
 2:0/0 = 0
@@ -1174,59 +1170,78 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3nfty")
 
-[node name="Room" type="Node2D"]
-script = ExtResource("1_3ogbv")
-enemy_node = ExtResource("2_lbddr")
-coin_node = ExtResource("3_bh7tm")
-heart_node = ExtResource("3_4iu8m")
-key_node = ExtResource("5_h84cp")
-exit_door_node = ExtResource("6_iyyfo")
+[node name="DeathMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_abqey")
 
 [node name="Base" type="TileMapLayer" parent="." groups=["wall"]]
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAAKAAoAAAAUAAIAAAACAAoAAAATAAIAAAADAAoAAAATAAIAAAAHAAoAAAATAAIAAAAIAAoAAAATAAIAAAAJAAoAAAATAAIAAAAKAAIAAAAUAAEAAAAKAAMAAAAUAAEAAAAKAAcAAAAUAAEAAAAKAAgAAAAUAAEAAAAKAAkAAAAUAAEAAAAAAAAAAAASAAAAAAAKAAAAAAASAAAAAFAAAAoAAAASAAAAAGABAAAAAAATAAAAAAACAAAAAAATAAAAAAADAAAAAAATAAAAAAAHAAAAAAATAAAAAAAIAAAAAAATAAAAAAAJAAAAAAATAAAAAAAKAAEAAAATAAAAAFABAAoAAAATAAAAADAAAAkAAAATAAAAAGAAAAgAAAATAAAAAGAAAAcAAAATAAAAAGAAAAMAAAATAAAAAGAAAAIAAAATAAAAAGAAAAEAAAATAAAAAGA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAASAAAAAAABAAAAAAATAAAAAAACAAAAAAATAAAAAAADAAAAAAATAAAAAAAHAAAAAAATAAAAAAAIAAAAAAATAAAAAAAJAAAAAAATAAAAAAAAAAkAAAATAAAAAGAAAAgAAAATAAAAAGAAAAcAAAATAAAAAGAAAAMAAAATAAAAAGAAAAIAAAATAAAAAGAAAAEAAAATAAAAAGAEAAAAAAATAAAAAAAFAAAAAAATAAAAAAAGAAAAAAATAAAAAAAKAAAAAAATAAAAAAALAAAAAAATAAAAAAAMAAAAAAATAAAAAAANAAAAAAATAAAAAAAOAAAAAAATAAAAAAAPAAAAAAATAAAAAAAQAAAAAAATAAAAAAARAAAAAAATAAAAAAASAAAAAAATAAAAAAATAAAAAAATAAAAAAAUAAAAAAATAAAAAAAVAAAAAAATAAAAAAAWAAAAAAATAAAAAAAXAAEAAAATAAAAAFAXAAIAAAATAAAAAFAXAAMAAAATAAAAAFAXAAQAAAATAAAAAFAXAAUAAAATAAAAAFAXAAYAAAATAAAAAFAXAAcAAAATAAAAAFAXAAgAAAATAAAAAFAXAAkAAAATAAAAAFAXAAoAAAATAAAAAFAXAAsAAAATAAAAAFAXAAwAAAATAAAAAFAWAA0AAAATAAAAADAVAA0AAAATAAAAADAUAA0AAAATAAAAADATAA0AAAATAAAAADASAA0AAAATAAAAADARAA0AAAATAAAAADAQAA0AAAATAAAAADAPAA0AAAATAAAAADAOAA0AAAATAAAAADANAA0AAAATAAAAADAMAA0AAAATAAAAADALAA0AAAATAAAAADAKAA0AAAATAAAAADAJAA0AAAATAAAAADAIAA0AAAATAAAAADAHAA0AAAATAAAAADAGAA0AAAATAAAAADAFAA0AAAATAAAAADAEAA0AAAATAAAAADADAA0AAAATAAAAADACAA0AAAATAAAAADABAA0AAAATAAAAADAAAAwAAAATAAAAAGAAAAsAAAATAAAAAGAAAAoAAAATAAAAAGAAAAYAAAATAAAAAGAAAAUAAAATAAAAAGAAAAQAAAATAAAAAGAXAAAAAAASAAAAAFAXAA0AAAASAAAAADAAAA0AAAASAAAAAGABAAEAAAAgAAsAAAAWAAEAAAAgAAsAAAAWAAwAAAAgAAsAAAABAAwAAAAgAAsAAAA=")
 tile_set = SubResource("TileSet_srosl")
 
-[node name="NorthDoor" type="TileMapLayer" parent="." groups=["wall"]]
-visible = false
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAADAP//AAATAAAAAGADAP7/AAATAAAAAGADAP3/AAATAAAAAGAHAP//AAATAAAAAFAHAP7/AAATAAAAAFAHAP3/AAATAAAAAFA=")
-tile_set = SubResource("TileSet_srosl")
+[node name="Intro" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="EastDoor" type="TileMapLayer" parent="." groups=["wall"]]
-visible = false
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAALAAMAAAATAAAAAAAMAAMAAAATAAAAAAANAAMAAAATAAAAAAALAAcAAAATAAAAADAMAAcAAAATAAAAADANAAcAAAATAAAAADA=")
-tile_set = SubResource("TileSet_srosl")
+[node name="Label" type="Label" parent="Intro"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_uqxmd")
+theme_override_font_sizes/font_size = 60
+text = "YOU DIED"
 
-[node name="SouthDoor" type="TileMapLayer" parent="." groups=["wall"]]
-visible = false
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAADAAsAAAATAAAAAGADAAwAAAATAAAAAGADAA0AAAATAAAAAGAHAAsAAAATAAAAAFAHAAwAAAATAAAAAFAHAA0AAAATAAAAAFA=")
-tile_set = SubResource("TileSet_srosl")
+[node name="Buttons" type="VBoxContainer" parent="Intro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="WestDoor" type="TileMapLayer" parent="." groups=["wall"]]
-visible = false
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD//wcAAAATAAAAADD+/wcAAAATAAAAADD9/wcAAAATAAAAADD//wMAAAATAAAAAAD+/wMAAAATAAAAAAD9/wMAAAATAAAAAAA=")
-tile_set = SubResource("TileSet_srosl")
+[node name="Stats" type="Label" parent="Intro/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uqxmd")
+theme_override_font_sizes/font_size = 40
+text = "Level Reached: 5
+Enemies Defeated: 24
+Coins Collected: 60"
+horizontal_alignment = 1
 
-[node name="EastWall" type="TileMapLayer" parent="." groups=["wall"]]
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAAKAAQAAAATAAAAAFAKAAUAAAATAAAAAFAKAAYAAAATAAAAAFA=")
-tile_set = SubResource("TileSet_srosl")
+[node name="Back" type="Button" parent="Intro/Buttons"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uqxmd")
+theme_override_font_sizes/font_size = 40
+text = "BACK TO MAIN MENU"
 
-[node name="SouthWall" type="TileMapLayer" parent="." groups=["wall"]]
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAAGAAoAAAATAAAAADAFAAoAAAATAAAAADAEAAoAAAATAAAAADA=")
-tile_set = SubResource("TileSet_srosl")
-
-[node name="WestWall" type="TileMapLayer" parent="." groups=["wall"]]
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAAAAAMAAAATAAAAAGAAAAQAAAATAAAAAGAAAAUAAAATAAAAAGAAAAYAAAATAAAAAGA=")
-tile_set = SubResource("TileSet_srosl")
-
-[node name="NorthWall" type="TileMapLayer" parent="." groups=["wall"]]
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAAEAAAAAAATAAAAAAAFAAAAAAATAAAAAAAGAAAAAAATAAAAAAA=")
-tile_set = SubResource("TileSet_srosl")
+[connection signal="pressed" from="Intro/Buttons/Back" to="." method="_on_back_pressed"]

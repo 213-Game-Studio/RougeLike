@@ -62,3 +62,6 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_ynhmq")
 }
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
