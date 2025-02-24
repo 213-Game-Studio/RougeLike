@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://def03rya6ihvf"]
+[gd_scene load_steps=11 format=3 uid="uid://def03rya6ihvf"]
 
 [ext_resource type="PackedScene" uid="uid://ctv64inm3gsud" path="res://Node/room.tscn" id="1_1ov52"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_ecakd"]
 [ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="3_m2s5c"]
 [ext_resource type="Script" path="res://Scripts/generation.gd" id="4_tob1c"]
 [ext_resource type="Script" path="res://Scripts/enemies.gd" id="5_w6e3c"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="6_8nhse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdpd2"]
 size = Vector2(14, 14.3333)
@@ -83,3 +84,82 @@ max_hearts_per_room = 1
 
 [node name="Enemies" type="Node" parent="." groups=["Enemy_Manager"]]
 script = ExtResource("5_w6e3c")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("6_8nhse")
+
+[node name="HealthBar" type="Panel" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -77.0
+offset_right = 240.0
+offset_bottom = -29.0
+grow_vertical = 0
+
+[node name="Heart1" type="Sprite2D" parent="UI/HealthBar"]
+position = Vector2(26, 23)
+scale = Vector2(3, 3)
+texture = ExtResource("3_m2s5c")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(680, 170, 50, 16)
+
+[node name="Heart2" type="Sprite2D" parent="UI/HealthBar"]
+position = Vector2(74, 24)
+scale = Vector2(3, 3)
+texture = ExtResource("3_m2s5c")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(680, 170, 50, 16)
+
+[node name="Heart3" type="Sprite2D" parent="UI/HealthBar"]
+position = Vector2(124, 24)
+scale = Vector2(3, 3)
+texture = ExtResource("3_m2s5c")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(680, 170, 50, 16)
+
+[node name="Heart4" type="Sprite2D" parent="UI/HealthBar"]
+position = Vector2(173, 24)
+scale = Vector2(3, 3)
+texture = ExtResource("3_m2s5c")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(680, 170, 50, 16)
+
+[node name="StatBar" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(150, 48)
+offset_left = 41.0
+offset_top = 522.0
+offset_right = 191.0
+offset_bottom = 570.0
+
+[node name="CoinSprite" type="Sprite2D" parent="UI/StatBar"]
+position = Vector2(24, 23)
+scale = Vector2(3, 3)
+texture = ExtResource("3_m2s5c")
+region_enabled = true
+region_rect = Rect2(697, 51, 16, 16)
+
+[node name="Coins" type="Label" parent="UI/StatBar"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 13.0
+offset_right = 87.0
+offset_bottom = 36.0
+text = "0"
+
+[node name="KeySprite" type="Sprite2D" parent="UI/StatBar"]
+modulate = Color(1, 1, 1, 0.0980392)
+position = Vector2(124, 22)
+scale = Vector2(3, 3)
+texture = ExtResource("3_m2s5c")
+region_enabled = true
+region_rect = Rect2(543, 186, 17, 17)
