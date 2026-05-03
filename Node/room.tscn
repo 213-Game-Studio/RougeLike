@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://ctv64inm3gsud"]
 
-[ext_resource type="Script" path="res://Scripts/room.gd" id="1_3ogbv"]
+[ext_resource type="Script" uid="uid://uvq4js5rihn2" path="res://Scripts/room.gd" id="1_3ogbv"]
 [ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="1_fta14"]
 [ext_resource type="PackedScene" uid="uid://u1ss5cvol7xx" path="res://Node/enemy.tscn" id="2_lbddr"]
 [ext_resource type="PackedScene" uid="uid://dngcuaou0vck4" path="res://Node/heart.tscn" id="3_4iu8m"]

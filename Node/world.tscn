@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://def03rya6ihvf"]
 
 [ext_resource type="PackedScene" uid="uid://ctv64inm3gsud" path="res://Node/room.tscn" id="1_1ov52"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="2_ecakd"]
+[ext_resource type="Script" uid="uid://doa7iayvius6h" path="res://Scripts/player.gd" id="2_ecakd"]
 [ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="3_m2s5c"]
 [ext_resource type="AudioStream" uid="uid://btlye3e10elad" path="res://Assets/SFX/walk.wav" id="4_eseee"]
-[ext_resource type="Script" path="res://Scripts/generation.gd" id="4_tob1c"]
-[ext_resource type="Script" path="res://Scripts/enemies.gd" id="5_w6e3c"]
-[ext_resource type="Script" path="res://Scripts/ui.gd" id="6_8nhse"]
+[ext_resource type="Script" uid="uid://b3nk0g5whda0x" path="res://Scripts/generation.gd" id="4_tob1c"]
+[ext_resource type="Script" uid="uid://b5ej74e3ah10a" path="res://Scripts/enemies.gd" id="5_w6e3c"]
+[ext_resource type="Script" uid="uid://ciirlmoekcwtk" path="res://Scripts/ui.gd" id="6_8nhse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdpd2"]
 size = Vector2(14, 14.3333)
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_11tyq"]
 _data = {
-"Hit": SubResource("Animation_617bc"),
-"RESET": SubResource("Animation_rwaqh")
+&"Hit": SubResource("Animation_617bc"),
+&"RESET": SubResource("Animation_rwaqh")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s643j"]
@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_kdpd2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
-"": SubResource("AnimationLibrary_11tyq")
+&"": SubResource("AnimationLibrary_11tyq")
 }
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="Player"]

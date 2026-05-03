@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://ifx6hnmpdsaw"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_0tjlx"]
+[ext_resource type="Script" uid="uid://dcwjid35uto2j" path="res://Scripts/main_menu.gd" id="1_0tjlx"]
 [ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="1_2d66v"]
 [ext_resource type="FontFile" uid="uid://b3ny887uyo3xp" path="res://Assets/Kenney Pixel.ttf" id="2_wfk3h"]
 

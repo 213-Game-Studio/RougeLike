@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://u1ss5cvol7xx"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_hbfbx"]
+[ext_resource type="Script" uid="uid://bkcbnjs4orfg2" path="res://Scripts/enemy.gd" id="1_hbfbx"]
 [ext_resource type="Texture2D" uid="uid://b2iq0bt63b6hh" path="res://Assets/Spritesheet.png" id="2_iyuxd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5m4h"]
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ynhmq"]
 _data = {
-"Hit": SubResource("Animation_cxbxi"),
-"RESET": SubResource("Animation_cq88s")
+&"Hit": SubResource("Animation_cxbxi"),
+&"RESET": SubResource("Animation_cq88s")
 }
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
@@ -60,7 +60,7 @@ shape = SubResource("RectangleShape2D_j5m4h")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_ynhmq")
+&"": SubResource("AnimationLibrary_ynhmq")
 }
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
